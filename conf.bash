@@ -12,4 +12,10 @@
 ## @Creation date file: 19.06.2021, 23:11:30
 
 declare -rx os_name="$(cat /etc/*-release | awk -F'=' '/^NAME=/ { print $2 }')"
+
+if [ "${os_name}" == "Fedora" ]; then
+    echo "The script works well, only when using the Fedora distribution"
+    exit 1
+fi
+
 declare -rx repo_path="$(pwd)"

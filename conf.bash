@@ -11,11 +11,13 @@
 ## @File: conf.bash
 ## @Creation date file: 19.06.2021, 23:11:30
 
-declare -rx os_name="$(cat /etc/*-release | awk -F'=' '/^NAME=/ { print $2 }')"
+declare -rx os_name="$(cat /etc/*-release | awk -F'=' '/^ID=/ { print $2 }')"
 
-if [ "${os_name}" == "Fedora" ]; then
+if [ "${os_name}" != "fedora" ]; then
     echo "The script works well, only when using the Fedora distribution"
     exit 1
 fi
 
 declare -rx repo_path="$(pwd)"
+
+echo -e "\nScript run path: ${run_path}\nRepo path: ${repo_path}\n"

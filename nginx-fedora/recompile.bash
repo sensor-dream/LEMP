@@ -11,19 +11,19 @@
 ## @File: recompile.bash
 ## @Creation date file: 19.06.2021, 22:15:17
 
+declare -rx run_path="$(pwd)"
+
 while [ -z ${os_name} ]; do
 
     cd ../
 
-    if [ -f conf.bash ]; then
+    if [[ -f conf.bash ]]; then
         . conf.bash
     else
-        if [ -f CNAME ]; then
+        if [[ -f "README.md" || "$(pwd)" == '/' ]]; then
             echo "Not search configuration file - conf.bash"
             exit 1
         fi
     fi
 
 done
-
-echo "${os_name}"
